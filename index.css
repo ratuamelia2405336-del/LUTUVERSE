@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-ink bg-parchment antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  :focus-visible {
+    outline: 3px solid #E8B923;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+
+  /* Placeholder canopy backdrop — swap with your own illustration via
+     background-image on .canopy-art or replace the <ForestBackdrop /> component */
+  .canopy-backdrop {
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 10%, rgba(95, 173, 130, 0.35), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 90% 85%, rgba(64, 130, 90, 0.30), transparent 55%),
+      linear-gradient(180deg, #143A28 0%, #0E2B1F 55%, #0A2118 100%);
+  }
+
+  .canopy-vignette::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 120% 90% at 50% 30%, transparent 50%, rgba(8, 22, 15, 0.45) 100%);
+  }
+
+  .paper-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #8FCBA9;
+    border-radius: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .text-stroke-bark {
+    -webkit-text-stroke: 1.5px #16432D;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body,
+#root,
+#root>div,
+div[class*="min-h-screen"],
+.relative.min-h-screen {
+  background-image: url('/bg-login.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+.canopy-backdrop,
+[class*="bg-canopy"],
+[class*="bg-forest"],
+div[className*="canopy-backdrop"] {
+  background-color: transparent !important;
+  background-image: none !important;
+}
